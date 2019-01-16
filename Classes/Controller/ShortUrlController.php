@@ -145,25 +145,27 @@ class ShortUrlController extends ActionController
      */
     protected function validateRequestMethod(string $expected = 'POST')
     {
-        if (($method = $this->request->getHttpRequest()->getMethod()) !== $expected) {
-            $action = $this->request->getControllerActionName();
+        $method = $this->request->getHttpRequest()->getMethod();
 
-            $this->addErrorMessage("Invalid request method for action '$action', expected '$expected' but recieved '$method'!");
-            $this->redirect('index');
-
-            return false;
+        if ($method === $expected) {
+            return true;
         }
 
-        return true;
+        $action = $this->request->getControllerActionName();
+
+        $this->addErrorMessage("Invalid request method for action '$action', expected '$expected' but recieved '$method'!");
+        $this->redirect('index');
+
+        return false;
     }
 
-    public function redirectToTargetAction(string $identifier)
+    public function redirectToTargetAction(string $id)
     {
-        $shortUrl = $this->shortUrlRepository->findOneByLink($identifier);
+        $shortUrl = $this->shortUrlRepository->findOneByLink($id);
 
         if ($shortUrl === null) {
             throw new \InvalidArgumentException(
-                "Could not locate any short url for the given identifier!",
+                "Could not locate any short url for the given identifier '$id'!",
                 1547661334
             );
         }

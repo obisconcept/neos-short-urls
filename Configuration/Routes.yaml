@@ -1,11 +1,12 @@
 -
   name: 'Linking Service'
-  uriPattern: '{identifier}'
+  uriPattern: '{id}'
   defaults:
     '@package': 'ObisConcept.ShortUrls'
     '@controller': 'ShortUrl'
     '@action': 'redirectToTarget'
-  toLowerCase: false
+    '@format': 'html'
   routeParts:
-    'identifier':
+    'id':
+      toLowerCase: false
       handler: 'ObisConcept\ShortUrls\Routing\RoutePartHandler\ValidShortUrl'

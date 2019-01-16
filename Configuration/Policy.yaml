@@ -2,11 +2,11 @@ privilegeTargets:
 
   'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
 
-    'ObisConcept.ShortUrls:Management':
-      matcher: 'method(ObisConcept\ShortUrls\Controller\ShortUrlController->(?!redirect).*Action())'
-
     'ObisConcept.ShortUrls:Access':
       matcher: 'method(ObisConcept\ShortUrls\Controller\ShortUrlController->redirectToTargetAction())'
+
+    'ObisConcept.ShortUrls:Management':
+      matcher: 'method(ObisConcept\ShortUrls\Controller\ShortUrlController->(?!redirect|init).*Action())'
 
 roles:
 

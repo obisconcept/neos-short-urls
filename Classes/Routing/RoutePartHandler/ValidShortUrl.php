@@ -47,6 +47,7 @@ class ValidShortUrl extends DynamicRoutePart
 
         foreach ($shortUrls as $shortUrl) {
             if ($shortUrl->getLink() === $value) {
+                $this->value = $value;
                 return true;
             }
         }
