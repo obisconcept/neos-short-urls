@@ -9,6 +9,9 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Mvc\Controller\ActionController;
 use ObisConcept\ShortUrls\Domain\Service\ShortIdService;
 
+/**
+ * @Flow\Scope("singleton")
+ */
 class StandardController extends ActionController
 {
     /**

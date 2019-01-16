@@ -11,6 +11,8 @@ use ObisConcept\ShortUrls\Exception\InvalidPatternException;
 
 /**
  * A generator service for short ids.
+ *
+ * @Flow\Scope("singleton")
  */
 class ShortIdService
 {
