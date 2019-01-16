@@ -33,4 +33,15 @@ class ShortUrlRepository extends Repository
             ));
         });
     }
+
+    public function addIdentifierKeysToResult(array $objects)
+    {
+        $result = [];
+
+        foreach ($objects as $obj) {
+            $result[$this->persistenceManager->getIdentifierByObject($obj)] = $obj;
+        }
+
+        return $result;
+    }
 }

@@ -1,0 +1,43 @@
+
+<f:layout name="Default" />
+
+<f:section name="Title">Short URLs - Overview</f:section>
+
+<f:section name="Content">
+    <link href="{f:uri.resource(path: 'Styles/main.min.css')}" rel="stylesheet" />
+    <script src="{f:uri.resource(path: 'Scripts/main.min.js')}" type="text/javascript" ></script>
+
+    <div class="neos-row-fluid">
+        <f:form action="create" objectName="shortUrl">
+            <fieldset class="neos-span10 neos-offset1">
+                <legend>Create a new ShortUrl</legend>
+
+                <div class="neos-control-group">
+                    <label for="short-url-name" class="neos-control-label">Name:</label>
+                    <div class="neos-controls neos-controls-row">
+                        <f:form.textfield property="name" id="short-url-name" class="neos-span12" />
+                    </div>
+                </div>
+
+                <div class="neos-control-group">
+                    <label for="short-url-link" class="neos-control-label">Link:</label>
+                    <div class="neos-controls neos-controls-row">
+                        <f:form.textfield property="link" id="short-url-link" value="{randId -> f:format.raw()}" class="neos-span12" />
+                    </div>
+                </div>
+
+                <div class="neos-control-group">
+                    <label for="short-url-target" class="neos-control-label">Target:</label>
+                    <div class="neos-controls neos-controls-row">
+                        <f:form.textfield property="target" id="short-url-target" class="neos-span12" />
+                    </div>
+                </div>
+
+                <div class="neos-control-group button-group">
+                    <f:link.action action="index" class="neos-button">Abort</f:link.action>
+                    <button type="submit" class="neos-button neos-button-primary">Save</button>
+                </div>
+            </fieldset>
+        </f:form>
+    </div>
+</f:section>

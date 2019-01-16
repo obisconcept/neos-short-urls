@@ -1,0 +1,21 @@
+{
+    "source": {
+      "vendor": {
+        "styles": [
+        ],
+        "scripts": [
+        ]
+      },
+      "styles": [
+        "Resources/Private/Assets/Stylesheets/**/*.scss"
+      ],
+      "scripts": [
+        "Resources/Private/Assets/Scripts/**/*.js"
+      ]
+    },
+    "dest": {
+      "styles": "Resources/Public/Styles",
+      "scripts": "Resources/Public/Scripts"
+    }
+  }
+  

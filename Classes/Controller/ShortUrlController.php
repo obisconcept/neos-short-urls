@@ -10,12 +10,16 @@ use Neos\Flow\Mvc\Controller\ActionController;
 use ObisConcept\ShortUrls\Domain\Service\ShortIdService;
 use ObisConcept\ShortUrls\Domain\Service\ShortUrlFactory;
 use ObisConcept\ShortUrls\Domain\Repository\ShortUrlRepository;
+use ObisConcept\ShortUrls\Domain\Model\ShortUrl;
+use ObisConcept\ShortUrls\Traits\CommonMessagesTrait;
 
 /**
  * @Flow\Scope("singleton")
  */
 class ShortUrlController extends ActionController
 {
+    use CommonMessagesTrait;
+
     /**
      * @Flow\Inject
      * @var ShortIdService
@@ -39,6 +43,109 @@ class ShortUrlController extends ActionController
      */
     public function indexAction()
     {
-        $this->view->assign('shortLinks', $this->shortUrlRepository->findAll());
+        $shortLinks = $this->shortUrlRepository->findAll();
+        $shortLinks = $this->shortUrlRepository->addIdentifierKeysToResult($shortLinks);
+
+        $this->view->assign('shortLinks', $shortLinks);
+    }
+
+    /**
+     * @return void
+     */
+    public function newAction()
+    {
+        $randomId = $this->idGenerator->generateSimpleId();
+
+        $this->view->assign('randId', $randomId);
+    }
+
+    /**
+     * @return void
+     */
+    public function newTimedAction()
+    {
+        $randomId = $this->idGenerator->generateSimpleId();
+
+        $this->view->assign('randId', $randomId);
+    }
+
+    /**
+     * @param ShortUrl $shortUrl
+     * @return void
+     */
+    public function createAction(ShortUrl $shortUrl)
+    {
+        if ($this->validateRequestMethod()) {
+            $name = $shortUrl->getName();
+
+            $this->shortUrlRepository->add($shortUrl);
+
+            $this->addSuccessMessage("Successfully created the new short url '$name'.");
+            $this->redirect('index');
+        }
+    }
+
+    /**
+     * @param string $identifier
+     * @return void
+     */
+    public function editAction(string $identifier)
+    {
+        $shortUrl = $this->shortUrlRepository->findByIdentifier($identifier);
+
+        $this->view->assign('shortUrl', $shortUrl);
+        $this->view->assign('isTimed', ($shortUrl->getValidUntil() !== null));
+    }
+
+    /**
+     * @param ShortUrl $shortUrl
+     * @return void
+     */
+    public function updateAction(ShortUrl $shortUrl)
+    {
+        if ($this->validateRequestMethod()) {
+            $name = $shortUrl->getName();
+
+            $this->shortUrlRepository->update($shortUrl);
+
+            $this->addSuccessMessage("Successfully updated the short url '$name'.");
+            $this->redirect('index');
+        }
+    }
+
+    /**
+     * @param ShortUrl $shortUrl
+     * @return void
+     */
+    public function deleteAction(ShortUrl $shortUrl)
+    {
+        if ($this->validateRequestMethod()) {
+            $name = $shortUrl->getName();
+
+            $this->shortUrlRepository->add($shortUrl);
+
+            $this->addSuccessMessage("Successfully deleted the short url '$name'.");
+            $this->redirect('index');
+        }
+    }
+
+    /**
+     * Validates that the current action request is of a specific method.
+     *
+     * @param string $expected The expected request method (defaults to 'POST')
+     * @return bool
+     */
+    protected function validateRequestMethod(string $expected = 'POST')
+    {
+        if (($method = $this->request->getMethod()) !== $expected) {
+            $action = $this->request->getControllerActionName();
+
+            $this->addErrorMessage("Invalid request method for action '$action', expected '$expected' but recieved '$method'!");
+            $this->redirect('index');
+
+            return false;
+        }
+
+        return true;
     }
 }

@@ -37,7 +37,7 @@ class ShortUrlFactory
         string $link = null,
         \DateTime $from = null,
         \DateTime $until = null
-    ) : ShortUrl {
+    ) {
         if ($link === null) {
             $link = $this->idGenerator->generateSimpleId();
         }

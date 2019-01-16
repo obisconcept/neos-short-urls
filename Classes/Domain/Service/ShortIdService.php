@@ -19,15 +19,15 @@ class ShortIdService
 {
     use BitwiseOperationsTrait;
 
-    const DEFAULT_ID_LENGTH = 7;
-    const DEFAULT_PATTERN_LENGTH = 64;
-    
     const REQUIRED_ID_LENGTH = 5;
     const REQUIRED_PATTERN_LENGTH = (self::REQUIRED_ID_LENGTH * 2);
 
     const MAX_ID_LENGTH = 100;
     const MAX_PATTERN_LENGTH = (self::MAX_ID_LENGTH * 2);
-    
+
+    const DEFAULT_ID_LENGTH = self::REQUIRED_ID_LENGTH;
+    const DEFAULT_PATTERN_LENGTH = 64;
+
     const TYPE_CUSTOM = -1;
     const TYPE_DEFAULT = 0;
 

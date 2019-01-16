@@ -1,0 +1,33 @@
+.neos-module-management-shortUrls {
+  hr.separator {
+    border: 1px solid #303030;
+    margin: 15px 0px;
+  }
+
+  a.inline-link {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #ffffff;
+    transition: color 0.2s ease;
+
+    &:hover {
+      text-decoration: underline;
+      color: #c0c0c0;
+    }
+  }
+
+  .action-buttons-wrapper {
+    .neos-button {
+      float: right;
+      margin: 0 10px;
+
+      &:first-of-type {
+        margin-right: 0;
+      }
+
+      &:last-of-type {
+        margin-left: 0;
+      }
+    }
+  }
+}
