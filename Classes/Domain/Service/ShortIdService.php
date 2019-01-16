@@ -69,7 +69,7 @@ class ShortIdService
     {
         do {
             $id = $this->client->generateId($length);
-        } while ($this->shortUrlRepository->findOneByTarget($id) !== null);
+        } while ($this->shortUrlRepository->findOneByLink($id) !== null);
 
         return $id;
     }
@@ -93,7 +93,7 @@ class ShortIdService
 
         do {
             $id = $this->client->formatedId($pattern, $length);
-        } while ($this->shortUrlRepository->findOneByTarget($id) !== null);
+        } while ($this->shortUrlRepository->findOneByLink($id) !== null);
 
         return $id;
     }

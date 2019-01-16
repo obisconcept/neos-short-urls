@@ -76,6 +76,14 @@ class ShortUrlController extends ActionController
     public function createAction(ShortUrl $shortUrl)
     {
         if ($this->validateRequestMethod()) {
+            $link = $shortUrl->getLink();
+
+            if ($this->shortUrlRepository->findOneByLink($link) !== null) {
+                $this->addWarningMessage("A short url with the link '$link' already exists!");
+                $this->redirect('index');
+                return;
+            }
+
             $name = $shortUrl->getName();
 
             $this->shortUrlRepository->add($shortUrl);

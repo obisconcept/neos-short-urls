@@ -34,11 +34,11 @@ class ShortUrlRepository extends Repository
         });
     }
 
-    public function findOneByTarget(string $target)
+    public function findOneByLink(string $link)
     {
         $query = $this->createQuery();
         return $query->matching(
-            $query->equals('target', $target)
+            $query->equals('link', $link)
         )->execute()->getFirst();
     }
 
