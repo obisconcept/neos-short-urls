@@ -28,10 +28,16 @@ class ShortUrlController extends ActionController
     protected $factory;
 
     /**
+     * @Flow\Inject
+     * @var ShortUrlRepository
+     */
+    protected $shortUrlRepository;
+
+    /**
      * @return void
      */
     public function indexAction()
     {
-        $this->view->assign('shortLinks', []);
+        $this->view->assign('shortLinks', $this->shortUrlRepository->findAll());
     }
 }

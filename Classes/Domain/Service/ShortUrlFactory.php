@@ -1,8 +1,9 @@
 <?php
 namespace ObisConcept\ShortUrls\Domain\Service;
 
-use ObisConcept\ShortUrls\Domain\Model\ShortUrl;
+use Neos\Flow\Annotations as Flow;
 use Neos\Neos\Domain\Service\UserService;
+use ObisConcept\ShortUrls\Domain\Model\ShortUrl;
 
 /*
  * This file is part of the ObisConcept.ShortUrls package.

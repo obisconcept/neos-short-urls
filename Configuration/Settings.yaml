@@ -1,4 +1,8 @@
 Neos:
+  Flow:
+    mvc:
+      routes:
+        'ObisConcept.ShortUrls': true
   Neos:
     modules:
       'management':

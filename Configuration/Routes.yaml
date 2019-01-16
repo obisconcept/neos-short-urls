@@ -1,0 +1,7 @@
+-
+  name: 'Linking Service'
+  uriPattern: '{identifier}'
+  toLowerCase: false
+  routeParts:
+    'identifier':
+      handler: 'ObisConcept\ShortUrls\Routing\RoutePartHandler\ValidShortUrl'

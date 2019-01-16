@@ -5,33 +5,48 @@
 
 <f:section name="Content">
     <div class="neos-row-fluid">
-        <table class="neos-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Link</th>
-                    <th>Target</th>
-                    <th>Valid from</th>
-                    <th>Valid until</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <f:widget.paginate objects="{shortLinks}" as="paginatedShortLinks" configuration="{itemsPerPage: 10}" widgetId="short-links-overview-pagination">
-                    <f:for each="{paginatedShortLinks}" as="link">
-                        <tr>
-                            <th>{link.name -> f:format.raw()}</th>
-                            <th>{link.link -> f:format.raw()}</th>
-                            <th>{link.target -> f:format.raw()}</th>
-                            <th>{link.validFrom -> f:format.date(format: 'd.m.Y H:i:s')}</th>
-                            <th>{link.validUntil -> f:format.date(format: 'd.m.Y H:i:s')}</th>
-                            <th>
-                                <!-- Actions go here -->
-                            </th>
-                        </tr>
-                    </f:for>
-                </f:widget.paginate>
-            </tbody>
-        </table>
+        <f:if condition="{shortLinks -> f:count()} > 0">
+            <f:then>
+                
+            </f:then>
+        </f:if>
     </div>
+</f:section>
+
+<f:section name="ShortLinkTable">
+    <table class="neos-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Link</th>
+                <th>Target</th>
+                <th>Valid from</th>
+                <th>Valid until</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <f:widget.paginate objects="{shortLinks}" as="paginatedShortLinks" configuration="{itemsPerPage: 10}" widgetId="short-links-overview-pagination">
+                <f:for each="{paginatedShortLinks}" as="link">
+                    <tr>
+                        <th>{link.name -> f:format.raw()}</th>
+                        <th>{link.link -> f:format.raw()}</th>
+                        <th>{link.target -> f:format.raw()}</th>
+                        <th>{link.validFrom -> f:format.date(format: 'd.m.Y H:i:s')}</th>
+                        <th>{link.validUntil -> f:format.date(format: 'd.m.Y H:i:s')}</th>
+                        <th>
+                            <!-- Actions go here -->
+                        </th>
+                    </tr>
+                </f:for>
+            </f:widget.paginate>
+        </tbody>
+    </table>
+</f:section>
+
+<f:section name="NoShortLinksFound">
+    <p class="notice">
+        <b>No short links could be found in the database.</b>
+        Maybe you want to create a new one.
+    </p>
 </f:section>
