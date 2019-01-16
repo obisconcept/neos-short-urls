@@ -35,4 +35,20 @@
   .neos-control-group.button-group {
     margin-top: 15px;
   }
+
+  table.ui-datepicker-calendar {
+    thead {
+      tr {
+        th {
+          height: initial;
+          padding: initial;
+          line-height: initial;
+
+          &:first-child {
+            padding-left: 0 !important;
+          }
+        }
+      }
+    }
+  }
 }
