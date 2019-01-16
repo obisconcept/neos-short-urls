@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="" product-name="ObisConcept.ShortUrls" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="buttons.newTimed" xml:space="preserve">
+        <source>New timed ShortUrl</source>
+      </trans-unit>
+      <trans-unit id="buttons.new" xml:space="preserve">
+        <source>New ShortUrl</source>
+      </trans-unit>
+
+      <trans-unit id="messages.nothingFound.title" xml:space="preserve">
+        <source>No short links could be found in the database.</source>
+      </trans-unit>
+      <trans-unit id="messages.nothingFound.message" xml:space="preserve">
+        <source>Maybe you want to create a new one.</source>
+      </trans-unit>
+
+      <trans-unit id="table.head.name" xml:space="preserve">
+        <source>Name</source>
+      </trans-unit>
+      <trans-unit id="table.head.link" xml:space="preserve">
+        <source>Link</source>
+      </trans-unit>
+      <trans-unit id="table.head.target" xml:space="preserve">
+        <source>Target</source>
+      </trans-unit>
+      <trans-unit id="table.head.validFrom" xml:space="preserve">
+        <source>Valid from</source>
+      </trans-unit>
+      <trans-unit id="table.head.validUntil" xml:space="preserve">
+        <source>Valid until</source>
+      </trans-unit>
+      <trans-unit id="table.head.actions" xml:space="preserve">
+        <source>Actions</source>
+      </trans-unit>
+
+      <trans-unit id="table.body.notAvailable" xml:space="preserve">
+        <source>n/a</source>
+      </trans-unit>
+
+      <trans-unit id="heading.new" xml:space="preserve">
+        <source>Create a new ShortUrl</source>
+      </trans-unit>
+      <trans-unit id="heading.newTimed" xml:space="preserve">
+        <source>Create a new timed ShortUrl</source>
+      </trans-unit>
+      <trans-unit id="heading.edit" xml:space="preserve">
+        <source>Edit an existing ShortUrl</source>
+      </trans-unit>
+
+      <trans-unit id="form.submit" xml:space="preserve">
+        <source>Save</source>
+      </trans-unit>
+      <trans-unit id="form.abort" xml:space="preserve">
+        <source>Abort</source>
+      </trans-unit>
+
+      <trans-unit id="tooltips.newTimed" xml:space="preserve">
+        <source>A timed ShortUrl is only valid within a specified time range.</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

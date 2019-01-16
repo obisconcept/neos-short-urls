@@ -2,7 +2,7 @@
 
 <f:layout name="Default" />
 
-<f:section name="Title">Short URLs - Overview</f:section>
+<f:section name="Title">Short URLs - Edit</f:section>
 
 <f:section name="Content">
     {f:render(partial: 'MockUpHead')}
@@ -10,24 +10,24 @@
     <div class="neos-row-fluid">
         <f:form action="update" object="{shortUrl}" objectName="shortUrl">
             <fieldset class="neos-span7">
-                <legend>Create a new ShortUrl</legend>
+                <legend>{f:translate(id: 'heading.edit', package: 'ObisConcept.ShortUrls', source: 'Main')}</legend>
 
                 <div class="neos-control-group">
-                    <label for="short-url-name" class="neos-control-label">Name:</label>
+                    <label for="short-url-name" class="neos-control-label">{f:translate(id: 'table.head.name', package: 'ObisConcept.ShortUrls', source: 'Main')}:</label>
                     <div class="neos-controls neos-controls-row">
                         <f:form.textfield property="name" id="short-url-name" class="neos-span12" additionalAttributes="{required: true}" />
                     </div>
                 </div>
 
                 <div class="neos-control-group">
-                    <label for="short-url-link" class="neos-control-label">Link:</label>
+                    <label for="short-url-link" class="neos-control-label">{f:translate(id: 'table.head.link', package: 'ObisConcept.ShortUrls', source: 'Main')}:</label>
                     <div class="neos-controls neos-controls-row">
                         <f:form.textfield property="link" id="short-url-link" value="{randId -> f:format.raw()}" class="neos-span12" additionalAttributes="{required: true}" />
                     </div>
                 </div>
 
                 <div class="neos-control-group">
-                    <label for="short-url-target" class="neos-control-label">Target:</label>
+                    <label for="short-url-target" class="neos-control-label">{f:translate(id: 'table.head.target', package: 'ObisConcept.ShortUrls', source: 'Main')}:</label>
                     <div class="neos-controls neos-controls-row">
                         <f:form.textfield property="target" id="short-url-target" class="neos-span12" additionalAttributes="{required: true}" />
                     </div>
@@ -35,14 +35,14 @@
 
                 <f:if condition="{isTimed}">
                     <div class="neos-control-group">
-                        <label for="short-url-valid-from" class="neos-control-label">Valid from:</label>
+                        <label for="short-url-valid-from" class="neos-control-label">{f:translate(id: 'table.head.validFrom', package: 'ObisConcept.ShortUrls', source: 'Main')}:</label>
                         <div class="neos-controls neos-controls-row">
                             <form:datePicker property="validFrom" id="short-url-valid-from" class="neos-span12" />
                         </div>
                     </div>
 
                     <div class="neos-control-group">
-                        <label for="short-url-valid-until" class="neos-control-label">Valid until:</label>
+                        <label for="short-url-valid-until" class="neos-control-label">{f:translate(id: 'table.head.validUntil', package: 'ObisConcept.ShortUrls', source: 'Main')}:</label>
                         <div class="neos-controls neos-controls-row">
                             <form:datePicker property="validUntil" id="short-url-valid-until" class="neos-span12" additionalAttributes="{required: true}" />
                         </div>
@@ -50,8 +50,12 @@
                 </f:if>
 
                 <div class="neos-control-group button-group">
-                    <f:link.action action="index" class="neos-button">Abort</f:link.action>
-                    <button type="submit" class="neos-button neos-button-primary">Save</button>
+                    <button type="submit" class="neos-button neos-button-primary">
+                        {f:translate(id: 'form.submit', package: 'ObisConcept.ShortUrls', source: 'Main')}
+                    </button>
+                    <f:link.action action="index" class="neos-button">
+                        {f:translate(id: 'form.abort', package: 'ObisConcept.ShortUrls', source: 'Main')}
+                    </f:link.action>
                 </div>
             </fieldset>
         </f:form>

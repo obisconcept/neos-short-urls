@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="" product-name="ObisConcept.ShortUrls" source-language="en" datatype="plaintext">
+    <body>
+      <trans-unit id="buttons.newTimed" xml:space="preserve">
+        <source>New timed ShortUrl</source>
+        <target xml:lang="de" state="translated">Neue zeitgesteuerte Kurz-Url</target>
+      </trans-unit>
+      <trans-unit id="buttons.new" xml:space="preserve">
+        <source>New ShortUrl</source>
+        <target xml:lang="de" state="translated">Neue Kurz-Url</target>
+      </trans-unit>
+
+      <trans-unit id="messages.nothingFound.title" xml:space="preserve">
+        <source>No short links could be found in the database.</source>
+        <target xml:lang="de" state="translated">In der Datenbank konnten keine Kurz-Urls gefunden werden.</target>
+      </trans-unit>
+      <trans-unit id="messages.nothingFound.message" xml:space="preserve">
+        <source>Maybe you want to create a new one.</source>
+        <target xml:lang="de" state="translated">Vielleicht möchten Sie einen neuen erstellen.</target>
+      </trans-unit>
+
+      <trans-unit id="table.head.name" xml:space="preserve">
+        <source>Name</source>
+        <target xml:lang="de" state="translated">Name</target>
+      </trans-unit>
+      <trans-unit id="table.head.link" xml:space="preserve">
+        <source>Link</source>
+        <target xml:lang="de" state="translated">Link</target>
+      </trans-unit>
+      <trans-unit id="table.head.target" xml:space="preserve">
+        <source>Target</source>
+        <target xml:lang="de" state="translated">Ziel</target>
+      </trans-unit>
+      <trans-unit id="table.head.validFrom" xml:space="preserve">
+        <source>Valid from</source>
+        <target xml:lang="de" state="translated">Gültig ab</target>
+      </trans-unit>
+      <trans-unit id="table.head.validUntil" xml:space="preserve">
+        <source>Valid until</source>
+        <target xml:lang="de" state="translated">Gültig bis</target>
+      </trans-unit>
+      <trans-unit id="table.head.actions" xml:space="preserve">
+        <source>Actions</source>
+        <target xml:lang="de" state="translated">Aktionen</target>
+      </trans-unit>
+
+      <trans-unit id="table.body.notAvailable" xml:space="preserve">
+        <source>n/a</source>
+        <target xml:lang="de" state="translated">n/v</target>
+      </trans-unit>
+
+      <trans-unit id="heading.new" xml:space="preserve">
+        <source>Create a new ShortUrl</source>
+        <target xml:lang="de" state="translated">Eine neue Kurz-Url erstellen</target>
+      </trans-unit>
+      <trans-unit id="heading.newTimed" xml:space="preserve">
+        <source>Create a new timed ShortUrl</source>
+        <target xml:lang="de" state="translated">Eine neue zeitgesteuerte Kurz-Url erstellen</target>
+      </trans-unit>
+      <trans-unit id="heading.edit" xml:space="preserve">
+        <source>Edit an existing ShortUrl</source>
+        <target xml:lang="de" state="translated">Eine existierende Kurz-Url bearbeiten</target>
+      </trans-unit>
+
+      <trans-unit id="form.submit" xml:space="preserve">
+        <source>Save</source>
+        <target xml:lang="de" state="translated">Speichern</target>
+      </trans-unit>
+      <trans-unit id="form.abort" xml:space="preserve">
+        <source>Abort</source>
+        <target xml:lang="de" state="translated">Abbrechen</target>
+      </trans-unit>
+
+      <trans-unit id="tooltips.newTimed" xml:space="preserve">
+        <source>A timed ShortUrl is only valid within a specified time range.</source>
+        <target xml:lang="de" state="translated">Eine zeitgesteuerte Kurz-Url ist nur innerhalb eines bestimmten Zeitraums gültig.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

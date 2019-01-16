@@ -8,11 +8,11 @@
     <script src="{f:uri.resource(path: 'Scripts/main.min.js')}" type="text/javascript" ></script>
 
     <div class="neos-row-fluid action-buttons-wrapper">
-        <f:link.action action="newTimed" class="neos-button neos-button-success" title="A timed ShortUrl is only valid within a specified time range." additionalAttributes="{data-neos-toggle: 'tooltip', data-placement: 'bottom'}">
-            New timed ShortUrl
+        <f:link.action action="newTimed" class="neos-button neos-button-success" title="{f:translate(id: 'tooltips.newTimed', package: 'ObisConcept.ShortUrls', source: 'Main')}" additionalAttributes="{data-neos-toggle: 'tooltip', data-placement: 'bottom'}">
+            {f:translate(id: 'buttons.newTimed', package: 'ObisConcept.ShortUrls', source: 'Main')}
         </f:link.action>
         <f:link.action action="new" class="neos-button neos-button-success">
-            New ShortUrl
+            {f:translate(id: 'buttons.new', package: 'ObisConcept.ShortUrls', source: 'Main')}
         </f:link.action>
     </div>
 
@@ -34,12 +34,12 @@
     <table class="neos-table">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Link</th>
-                <th>Target</th>
-                <th>Valid from</th>
-                <th>Valid until</th>
-                <th>Actions</th>
+                <th>{f:translate(id: 'table.head.name', package: 'ObisConcept.ShortUrls', source: 'Main')}</th>
+                <th>{f:translate(id: 'table.head.link', package: 'ObisConcept.ShortUrls', source: 'Main')}</th>
+                <th>{f:translate(id: 'table.head.target', package: 'ObisConcept.ShortUrls', source: 'Main')}</th>
+                <th>{f:translate(id: 'table.head.validFrom', package: 'ObisConcept.ShortUrls', source: 'Main')}</th>
+                <th>{f:translate(id: 'table.head.validUntil', package: 'ObisConcept.ShortUrls', source: 'Main')}</th>
+                <th>{f:translate(id: 'table.head.actions', package: 'ObisConcept.ShortUrls', source: 'Main')}</th>
             </tr>
         </thead>
         <tbody>
@@ -59,13 +59,13 @@
                     <td>
                         <f:if condition="{link.validFrom}">
                             <f:then>{link.validFrom -> f:format.date(format: 'd.m.Y')}</f:then>
-                            <f:else>n/a</f:else>
+                            <f:else>{f:translate(id: 'table.body.notAvailable', package: 'ObisConcept.ShortUrls', source: 'Main')}</f:else>
                         </f:if>
                     </td>
                     <td>
                         <f:if condition="{link.validUntil}">
                             <f:then>{link.validUntil -> f:format.date(format: 'd.m.Y')}</f:then>
-                            <f:else>n/a</f:else>
+                            <f:else>{f:translate(id: 'table.body.notAvailable', package: 'ObisConcept.ShortUrls', source: 'Main')}</f:else>
                         </f:if>
                     </td>
                     <td>
@@ -87,7 +87,7 @@
 
 <f:section name="NoShortLinksFound">
     <p class="notice">
-        <b>No short links could be found in the database.</b>
-        <br>Maybe you want to <f:link.action action="new" class="inline-link">create a new one</f:link.action>.
+        <b>{f:translate(id: 'messages.nothingFound.title', package: 'ObisConcept.ShortUrls', source: 'Main')}</b>
+        <br>{f:translate(id: 'messages.nothingFound.message', package: 'ObisConcept.ShortUrls', source: 'Main')}.
     </p>
 </f:section>
