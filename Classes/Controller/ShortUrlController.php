@@ -9,6 +9,7 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Mvc\Controller\ActionController;
 use ObisConcept\ShortUrls\Domain\Service\ShortIdService;
 use ObisConcept\ShortUrls\Domain\Service\ShortUrlFactory;
+use ObisConcept\ShortUrls\Domain\Repository\ShortUrlRepository;
 
 /**
  * @Flow\Scope("singleton")

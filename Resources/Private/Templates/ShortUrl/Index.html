@@ -7,8 +7,11 @@
     <div class="neos-row-fluid">
         <f:if condition="{shortLinks -> f:count()} > 0">
             <f:then>
-                
+                {f:render(section: 'ShortLinkTable')}
             </f:then>
+            <f:else>
+                {f:render(section: 'NoShortLinksFound')}
+            </f:else>
         </f:if>
     </div>
 </f:section>
