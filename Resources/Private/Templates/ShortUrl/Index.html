@@ -46,12 +46,22 @@
             <f:widget.paginate objects="{shortLinks}" as="paginatedShortLinks" configuration="{itemsPerPage: 10}" widgetId="short-links-overview-pagination">
                 <f:for each="{paginatedShortLinks}" as="link" key="identifier">
                     <tr>
-                        <th>{link.name -> f:format.raw()}</th>
-                        <th>{link.link -> f:format.raw()}</th>
-                        <th>{link.target -> f:format.raw()}</th>
-                        <th>{link.validFrom -> f:format.date(format: 'd.m.Y')}</th>
-                        <th>{link.validUntil -> f:format.date(format: 'd.m.Y')}</th>
-                        <th>
+                        <td>{link.name -> f:format.raw()}</td>
+                        <td>{link.link -> f:format.raw()}</td>
+                        <td>{link.target -> f:format.raw()}</td>
+                        <td>
+                            <f:if condition="{link.validFrom}">
+                                <f:then>{link.validFrom -> f:format.date(format: 'd.m.Y')}</f:then>
+                                <f:else>n/a</f:else>
+                            </f:if>
+                        </td>
+                        <td>
+                            <f:if condition="{link.validUntil}">
+                                <f:then>{link.validUntil -> f:format.date(format: 'd.m.Y')}</f:then>
+                                <f:else>n/a</f:else>
+                            </f:if>
+                        </td>
+                        <td>
                             <f:link.action action="edit" arguments="{identifier: identifier}" class="neos-button">
                                 <i class="icon-edit"></i>
                             </f:link.action>
@@ -61,7 +71,7 @@
                                     <i class="icon-trash"></i>
                                 </f:form.submit>
                             </f:form>
-                        </th>
+                        </td>
                     </tr>
                 </f:for>
             </f:widget.paginate>

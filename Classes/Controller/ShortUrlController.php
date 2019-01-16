@@ -145,7 +145,7 @@ class ShortUrlController extends ActionController
      */
     protected function validateRequestMethod(string $expected = 'POST')
     {
-        if (($method = $this->request->getMethod()) !== $expected) {
+        if (($method = $this->request->getHttpRequest()->getMethod()) !== $expected) {
             $action = $this->request->getControllerActionName();
 
             $this->addErrorMessage("Invalid request method for action '$action', expected '$expected' but recieved '$method'!");

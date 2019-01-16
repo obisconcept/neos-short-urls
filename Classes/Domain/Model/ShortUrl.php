@@ -8,6 +8,8 @@ namespace ObisConcept\ShortUrls\Domain\Model;
 use Doctrine\ORM\Mapping as ORM;
 use Neos\Flow\Annotations as Flow;
 use Neos\Neos\Domain\Model\User;
+use Neos\Neos\Domain\Service\UserService;
+use Neos\Flow\Core\Bootstrap;
 
 /**
  * @Flow\Entity
@@ -46,21 +48,41 @@ class ShortUrl
     protected $creationDate;
 
     /**
+     * @ORM\Column(nullable=true)
      * @var \DateTime
      */
     protected $validFrom;
 
     /**
+     * @ORM\Column(nullable=true)
      * @var \DateTime
      */
     protected $validUntil;
 
-    public function __construct(string $name, string $link, string $target, User $creator)
-    {
+    /**
+     * @param string $name
+     * @param string $link
+     * @param string $target
+     * @param \DateTime $validFrom
+     * @param \DateTime $validUntil
+     */
+    public function __construct(
+        string $name,
+        string $link,
+        string $target,
+        User $creator = null,
+        \DateTime $validFrom = null,
+        \DateTime $validUntil = null
+    ) {
         $this->name = $name;
         $this->link = $link;
         $this->target = $target;
-        $this->creator = $creator;
+        $this->validFrom = $validFrom;
+        $this->validUntil = $validUntil;
+
+        $userService = (Bootstrap::$staticObjectManager)->get(UserService::class);
+
+        $this->creator = $userService->getCurrentUser();
         $this->creationDate = new \DateTime('now');
     }
 

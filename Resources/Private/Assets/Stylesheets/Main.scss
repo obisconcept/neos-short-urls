@@ -35,17 +35,39 @@
   .neos-control-group.button-group {
     margin-top: 15px;
   }
+}
 
+.ui-datepicker {
   table.ui-datepicker-calendar {
-    thead {
+    thead, tbody {
       tr {
-        th {
+        th, td {
           height: initial;
           padding: initial;
           line-height: initial;
 
           &:first-child {
             padding-left: 0 !important;
+          }
+
+          &:last-child {
+            padding-right: 0 !important;
+          }
+        }
+
+        th {
+          padding: .7em .3em;
+        }
+
+        td > a {
+          color: #454545;
+          
+          &.ui-state-highlight {
+            color: #777620;
+          }
+
+          &:hover {
+            color: #303030;
           }
         }
       }
