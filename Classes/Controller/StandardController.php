@@ -7,9 +7,15 @@ namespace ObisConcept\ShortUrls\Controller;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Mvc\Controller\ActionController;
+use ObisConcept\ShortUrls\Domain\Service\ShortIdService;
 
 class StandardController extends ActionController
 {
+    /**
+     * @Flow\Inject
+     * @var ShortIdService
+     */
+    protected $idGenerator;
 
     /**
      * @return void
