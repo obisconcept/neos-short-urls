@@ -8,11 +8,12 @@ namespace ObisConcept\ShortUrls\Controller;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Mvc\Controller\ActionController;
 use ObisConcept\ShortUrls\Domain\Service\ShortIdService;
+use ObisConcept\ShortUrls\Domain\Service\ShortUrlFactory;
 
 /**
  * @Flow\Scope("singleton")
  */
-class StandardController extends ActionController
+class ShortUrlController extends ActionController
 {
     /**
      * @Flow\Inject
@@ -21,12 +22,16 @@ class StandardController extends ActionController
     protected $idGenerator;
 
     /**
+     * @Flow\Inject
+     * @var ShortUrlFactory
+     */
+    protected $factory;
+
+    /**
      * @return void
      */
     public function indexAction()
     {
-        $this->view->assign('foos', array(
-            'bar', 'baz'
-        ));
+        $this->view->assign('shortLinks', []);
     }
 }

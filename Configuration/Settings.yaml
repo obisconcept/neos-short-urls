@@ -5,6 +5,6 @@ Neos:
         submodules:
           'shortUrls':
             label: 'Short URLs'
-            controller: 'ObisConcept\ShortUrls\Controller\StandardController'
+            controller: 'ObisConcept\ShortUrls\Controller\ShortUrlController'
             description: 'Create short urls for your content to ease the sharing of pagelinks.'
             icon: 'icon-link'

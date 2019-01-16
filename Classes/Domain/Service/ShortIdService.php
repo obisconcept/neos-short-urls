@@ -5,6 +5,7 @@ namespace ObisConcept\ShortUrls\Domain\Service;
  * This file is part of the ObisConcept.ShortUrls package.
  */
 
+use Neos\Flow\Annotations as Flow;
 use Hidehalo\Nanoid\Client;
 use ObisConcept\ShortUrls\Traits\BitwiseOperationsTrait;
 use ObisConcept\ShortUrls\Exception\InvalidPatternException;
