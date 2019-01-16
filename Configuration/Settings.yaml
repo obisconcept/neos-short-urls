@@ -12,8 +12,3 @@ Neos:
             controller: 'ObisConcept\ShortUrls\Controller\ShortUrlController'
             description: 'Create short urls for your content to ease the sharing of pagelinks.'
             icon: 'icon-link'
-
-ObisConcept:
-  ShortUrls:
-    defaultLength: 5
-    generatorPattern: null
