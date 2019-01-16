@@ -125,12 +125,14 @@ class ShortUrlController extends ActionController
      * @param ShortUrl $shortUrl
      * @return void
      */
-    public function deleteAction(ShortUrl $shortUrl)
+    public function deleteAction(string $identifier)
     {
         if ($this->validateRequestMethod()) {
+            $shortUrl = $this->shortUrlRepository->findByIdentifier($identifier);
+
             $name = $shortUrl->getName();
 
-            $this->shortUrlRepository->add($shortUrl);
+            $this->shortUrlRepository->remove($shortUrl);
 
             $this->addSuccessMessage("Successfully deleted the short url '$name'.");
             $this->redirect('index');
