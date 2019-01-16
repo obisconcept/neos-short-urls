@@ -1,7 +1,7 @@
 {
-    "description": "",
-    "type": "neos-plugin",
     "name": "obisconcept/neos-short-urls",
+    "type": "neos-plugin",
+    "description": "A ShortUrl backend module for the Neos CMS.",
     "require": {
         "neos/flow": "^4.3",
         "neos/neos": "^3.3",
