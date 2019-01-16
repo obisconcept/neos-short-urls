@@ -16,18 +16,23 @@
     }
   }
 
-  .action-buttons-wrapper {
+  .action-buttons-wrapper,
+  .neos-control-group.button-group {
     .neos-button {
       float: right;
       margin: 0 10px;
 
-      &:first-of-type {
+      &:first-child {
         margin-right: 0;
       }
 
-      &:last-of-type {
+      &:last-child {
         margin-left: 0;
       }
     }
+  }
+
+  .neos-control-group.button-group {
+    margin-top: 15px;
   }
 }

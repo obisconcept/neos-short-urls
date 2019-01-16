@@ -34,6 +34,14 @@ class ShortUrlRepository extends Repository
         });
     }
 
+    public function findOneByTarget(string $target)
+    {
+        $query = $this->createQuery();
+        return $query->matching(
+            $query->equals('target', $target)
+        )->execute()->getFirst();
+    }
+
     public function addIdentifierKeysToResult(array $objects)
     {
         $result = [];

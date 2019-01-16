@@ -9,6 +9,7 @@ use Neos\Flow\Annotations as Flow;
 use Hidehalo\Nanoid\Client;
 use ObisConcept\ShortUrls\Traits\BitwiseOperationsTrait;
 use ObisConcept\ShortUrls\Exception\InvalidPatternException;
+use ObisConcept\ShortUrls\Domain\Repository\ShortUrlRepository;
 
 /**
  * A generator service for short ids.
@@ -47,24 +48,34 @@ class ShortIdService
      */
     protected $client;
 
+    /**
+     * @Flow\Inject
+     * @var ShortUrlRepository
+     */
+    protected $shortUrlRepository;
+
     public function initializeObject()
     {
         $this->client = new Client;
     }
 
     /**
-     * Generate a simple shortId.
+     * Generate a simple unique shortId.
      *
      * @param int $length The desired length of the identifier.
      * @return string
      */
     public function generateSimpleId(int $length = self::DEFAULT_ID_LENGTH)
     {
-        return $this->client->generateId($length);
+        do {
+            $id = $this->client->generateId($length);
+        } while ($this->shortUrlRepository->findOneByTarget($id) !== null);
+
+        return $id;
     }
 
     /**
-     * Generate a complex shortid.
+     * Generate a complex unique shortid.
      *
      * @param int $length The desired length of the identifier.
      * @param int $type The type of the pattern to use for generation.
@@ -80,7 +91,11 @@ class ShortIdService
             $pattern = $this->retrievePattern($type);
         }
 
-        return $this->client->formatedId($pattern, $length);
+        do {
+            $id = $this->client->formatedId($pattern, $length);
+        } while ($this->shortUrlRepository->findOneByTarget($id) !== null);
+
+        return $id;
     }
 
     /**
