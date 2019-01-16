@@ -43,38 +43,44 @@
             </tr>
         </thead>
         <tbody>
-            <f:widget.paginate objects="{shortLinks}" as="paginatedShortLinks" configuration="{itemsPerPage: 10}" widgetId="short-links-overview-pagination">
-                <f:for each="{paginatedShortLinks}" as="link" key="identifier">
-                    <tr>
-                        <td>{link.name -> f:format.raw()}</td>
-                        <td>{link.link -> f:format.raw()}</td>
-                        <td>{link.target -> f:format.raw()}</td>
-                        <td>
-                            <f:if condition="{link.validFrom}">
-                                <f:then>{link.validFrom -> f:format.date(format: 'd.m.Y')}</f:then>
-                                <f:else>n/a</f:else>
-                            </f:if>
-                        </td>
-                        <td>
-                            <f:if condition="{link.validUntil}">
-                                <f:then>{link.validUntil -> f:format.date(format: 'd.m.Y')}</f:then>
-                                <f:else>n/a</f:else>
-                            </f:if>
-                        </td>
-                        <td>
-                            <f:link.action action="edit" arguments="{identifier: identifier}" class="neos-button">
-                                <i class="icon-edit"></i>
-                            </f:link.action>
-                            <f:form action="delete" method="post">
-                                <f:form.hidden name="identifier" value="{identifier -> f:format.raw()}" />
-                                <f:form.submit class="neos-button">
-                                    <i class="icon-trash"></i>
-                                </f:form.submit>
-                            </f:form>
-                        </td>
-                    </tr>
-                </f:for>
-            </f:widget.paginate>
+            <f:for each="{shortLinks}" as="link" key="identifier">
+                <tr>
+                    <td>{link.name -> f:format.raw()}</td>
+                    <td>
+                        <a href="/{link.link -> f:format.raw()}" target="_blank" class="styled-table-link">
+                            {link.link -> f:format.raw()}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{link.target -> f:format.raw()}" target="_blank" class="styled-table-link">
+                            {link.target -> f:format.raw()}
+                        </a>
+                    </td>
+                    <td>
+                        <f:if condition="{link.validFrom}">
+                            <f:then>{link.validFrom -> f:format.date(format: 'd.m.Y')}</f:then>
+                            <f:else>n/a</f:else>
+                        </f:if>
+                    </td>
+                    <td>
+                        <f:if condition="{link.validUntil}">
+                            <f:then>{link.validUntil -> f:format.date(format: 'd.m.Y')}</f:then>
+                            <f:else>n/a</f:else>
+                        </f:if>
+                    </td>
+                    <td>
+                        <f:link.action action="edit" arguments="{identifier: identifier}" class="neos-button neos-button-primary">
+                            <i class="icon-edit"></i>
+                        </f:link.action>
+                        <f:form action="delete" method="post" class="mockup-deletion-button">
+                            <f:form.hidden name="identifier" value="{identifier -> f:format.raw()}" />
+                            <button type="submit" class="neos-button neos-button-danger">
+                                <i class="icon-trash"></i>
+                            </button>
+                        </f:form>
+                    </td>
+                </tr>
+            </f:for>
         </tbody>
     </table>
 </f:section>

@@ -8,20 +8,16 @@ namespace ObisConcept\ShortUrls\Domain\Repository;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Persistence\Repository;
 use ObisConcept\ShortUrls\Domain\Model\ShortUrl;
+use Neos\Flow\Persistence\QueryResultInterface;
 
 /**
  * @Flow\Scope("singleton")
  */
 class ShortUrlRepository extends Repository
 {
-    public function findAll()
-    {
-        return (parent::findAll())->toArray();
-    }
-
     public function findAllValid()
     {
-        return array_filter($this->findAll(), function ($elem) {
+        return array_filter($this->findAll()->toArray(), function ($elem) {
             $now = new \DateTime('now');
             $validUntil = $elem->getValidUntil();
             $validFrom = $elem->getValidFrom();
@@ -42,8 +38,17 @@ class ShortUrlRepository extends Repository
         )->execute()->getFirst();
     }
 
-    public function addIdentifierKeysToResult(array $objects)
+    public function addIdentifierKeysToResult($objects)
     {
+        if ($objects instanceof QueryResultInterface) {
+            $objects = $objects->toArray();
+        } elseif (!is_array($objects)) {
+            throw new \InvalidArgumentException(
+                'Invalid objects collection given to add identifiers to! Expected a QueryResultInterface or an array.',
+                1547659137
+            );
+        }
+
         $result = [];
 
         foreach ($objects as $obj) {

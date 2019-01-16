@@ -10,12 +10,20 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Neos\Domain\Model\User;
 use Neos\Neos\Domain\Service\UserService;
 use Neos\Flow\Core\Bootstrap;
+use ObisConcept\ShortUrls\Domain\Service\DateTimeService;
 
 /**
  * @Flow\Entity
  */
 class ShortUrl
 {
+    const FORBIDDEN_LINKS = [
+        'neos',
+        'media',
+        'form',
+        'search',
+    ];
+
     /**
      * @Flow\Validate(type="NotEmpty")
      * @var string
@@ -74,9 +82,26 @@ class ShortUrl
         \DateTime $validFrom = null,
         \DateTime $validUntil = null
     ) {
+        if (in_array(strtolower($link), self::FORBIDDEN_LINKS)) {
+            throw new \InvalidArgumentException(
+                "Desired ShortUrl link is forbidden in favor of functionality of Neos.",
+                1547662316
+            );
+        }
+
         $this->name = $name;
         $this->link = $link;
         $this->target = $target;
+
+        if ($validUntil !== null) {
+            $this->validUntil = DateTimeService::resetTime($validUntil);
+        } elseif ($validFrom === null) {
+            $validFrom = new \DateTime('now');
+            $this->validFrom = DateTimeService::resetTime($validFrom);
+        } elseif ($validFrom !== null) {
+            $this->validFrom = DateTimeService::resetTime($validFrom);
+        }
+
         $this->validFrom = $validFrom;
         $this->validUntil = $validUntil;
 

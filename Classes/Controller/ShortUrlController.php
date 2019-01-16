@@ -156,4 +156,18 @@ class ShortUrlController extends ActionController
 
         return true;
     }
+
+    public function redirectToTargetAction(string $identifier)
+    {
+        $shortUrl = $this->shortUrlRepository->findOneByLink($identifier);
+
+        if ($shortUrl === null) {
+            throw new \InvalidArgumentException(
+                "Could not locate any short url for the given identifier!",
+                1547661334
+            );
+        }
+
+        $this->redirectToUri($shortUrl->getTarget(), 0, 303);
+    }
 }
