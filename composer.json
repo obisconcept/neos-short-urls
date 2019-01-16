@@ -1,0 +1,18 @@
+{
+    "description": "",
+    "type": "neos-plugin",
+    "name": "obisconcept/neos-short-urls",
+    "require": {
+        "neos/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ObisConcept\\ShortUrls\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "ObisConcept.ShortUrls"
+        }
+    }
+}
