@@ -1,0 +1,11 @@
+privilegeTargets:
+  'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
+    'ObisConcept.ShortUrls:Access':
+      matcher: 'method(ObisConcept\ShortUrls\Controller\ShortUrlController->.*Action())'
+
+roles:
+  'Neos.Neos:Administrator':
+    privileges:
+      -
+        privilegeTarget: 'ObisConcept.ShortUrls:Access'
+        permission: GRANT

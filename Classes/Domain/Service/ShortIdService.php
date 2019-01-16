@@ -86,7 +86,7 @@ class ShortIdService
      * @return string
      * @throws InvalidPatternException
      */
-    protected function retrievePattern(int $type = TYPE_DEFAULT)
+    protected function retrievePattern(int $type = self::TYPE_DEFAULT)
     {
         if ($type === self::TYPE_DEFAULT) {
             return self::PATTERN_DEFAULT;
